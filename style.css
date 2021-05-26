@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600;900&display=swap');
+
+
+*, *:before, *:after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    /* background: #c2c2c2; */
+    background: #dbd7d7;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.container{
+    max-width: 75rem;
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 0 1.5em;
+}
+
+section.todo-data{
+    display: table;
+    width: 100%;
+    min-height: 40vh;
+}
+
+form{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+button{
+    cursor: pointer;
+    outline: 0;
+    border: none;
+    background: none;
+}
+
+form input, 
+form button{
+    display: inline-block;
+    font-size: 1.4rem;
+    padding: 0.6em;
+    outline: 0;
+    border: none;
+    height: 100%;
+}
+
+form input{
+    width: 90%;
+    font-weight: 100;
+    float: left;
+    background: none;
+    border-bottom: 2px solid #7a7a7a;
+}
+
+section.form-el-right{
+    width: 10%;
+    float: right;
+    height: 100%;
+    text-align: left;
+}
+
+
+.form-el{
+    display: inline-block;
+    height: 3.5rem;
+    margin: 4em 0;
+}
+
+.form-el:first-child{
+    width: 70%;
+    float: left;
+}
+.form-el:last-child{
+    width: 30%;
+    text-align: left;
+}
+.select-field{
+    position: relative;
+    width: 14rem;
+    height: 100%;
+}
+select#show-todos{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none; 
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: black;
+    width: 100%;
+    height: 100%;
+    padding: 0 1.4em;
+    font-size: 1.4rem;
+}
+.select-field::after{
+    content: '\02EC';
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    color: yellow;
+    top:0;
+    right: 0;
+    bottom: 0;
+    padding: 0 1.3em;
+    background: black;
+}
+
+header{
+    display: block;
+    width: 100%;
+    background: lightcoral;
+}
+
+h1{
+    color: #f6f6f6;
+    text-align: center;
+    line-height: 4;
+}
+
+
+ul{
+    display: block;
+    line-height: 2;
+    margin: 0.4em 0;
+    padding: 0.8em;
+    background: rgba(211, 212, 212, 0.5);
+}
+
+
+li{
+    list-style-type: none;
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
+}
+
+div.todo{
+    width: 50%;
+    margin: auto;
+}
+
+span.todo-title{
+    float: left;
+    font-size: 1.3rem;
+    max-width: 85%;
+    max-height: 2.5rem;
+    overflow: hidden;
+}
+
+button.delete-todo-btn{
+    float: right;
+    font-size: 1.2rem;
+    line-height: 2;
+    padding: 0 0.8em;
+    color: #e93c5f;
+}
+
+
+ .check-todo-btn{
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none; 
+    position: relative;
+    float: left;
+    width: 1.2rem;
+    height: 2.5rem;
+    margin: 0 0.8em;
+    font-size: 1.5rem;
+    background: url("resources/img/check-solid.svg") no-repeat center;
+
+}
+
+/* .check-todo-btn:checked{
+    color: white;
+    font-size: 1.5rem; 
+    background: url("resources/img/check-solid.svg") no-repeat center;
+} */
+
+.check-todo-btn:checked::before{
+    /* TODO - when checked */
+    content: '';
+    position: absolute;
+    color: #15a715;
+    font-size: 1.5rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+} 
+
+
+@media screen and (max-width: 750px){
+    .container{
+        width: auto;
+    }
+
+    div.select-field{
+        width: 100%;
+    }
+
+    div.todo{
+        width: auto;
+    }
+    span.todo-title{
+        max-width: 50%;
+        text-align: center;
+    }
+    .form-el:first-child{
+        width: 100%;
+    }
+    .form-el:last-child{
+        width: 100%;
+        margin: 2em 0;
+    }
+}
