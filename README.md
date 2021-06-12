@@ -1,6 +1,6 @@
-# TODO LIST (Vanilla JS)
+# TODO LIST
 
-A Todo List Crud application utilizing Local Storage.
+A Todo List Crud application utilizing Classes and ES6 arrow functions.
 
 Todo filter dropdown (not finished):  
 * Checked - shows all checked Todos.

@@ -1,54 +1,29 @@
-const todoInput = document.getElementById('insert-todo');
-const addTodoBtn = document.getElementById('add-todo-btn');
-const todoForm = document.getElementById('todoForm');
-const selectTodos = document.getElementById('show-todos');
 
 
 
-document.addEventListener('DOMContentLoaded', function(e){
-    let todo_List = [];
-    getTodos(todo_List);
-}, true);
-
-
-todoForm.addEventListener('submit', function(e){
-    e.preventDefault();
-    addTodos(todoInput.value);
-}, false);
-
-selectTodos.addEventListener('change', function(e){
-    e.preventDefault();
-    getFilteredTodos(e);
-}, false);
-
-
-function addTodos(item){
-
-    if(item !== ""){
-        
-        const todo_List =  {
-            id: Date.now(),
-            name: item,
-            isCompleted: false
-        }; //our todo object
-        
-        const blyn = [];
-
-        blyn.push(todo_List);
-
-        storeTodos(blyn);
-
-        todoInput.value = "";
-    }
+class Todo {
+    constructor(title){
+        this.id = Date.now();
+        this.title = title;
+        this.isCompleted = false;
+    } 
 }
 
+class App{
 
-function renderTodos(todos){
+    static getTodos(){
+        const getStoredTodos = [];
+        getStoredTodos.forEach(todo => App.addListOfTodos(todo));
+    }
 
-    todos.forEach(function(todo){
-        const checked = todo.isCompleted ? 'checked': 'unchecked';
-        
-        let todoSection = document.getElementsByClassName('todo-list')[0]; //get the todo section
+    static addListOfTodos(todo){
+
+        if(typeof todo === 'undefined'){
+            return null;
+        } 
+        console.log(todo);
+        const checked = todo.isCompleted ? "unchecked" : "checked";
+        const todoSection = document.getElementsByClassName('todo-list')[0];
 
         let todoDiv = document.createElement('div');
         todoDiv.classList.add('todo');
@@ -63,11 +38,10 @@ function renderTodos(todos){
         todoItem.innerHTML = 
         `
         <input type="checkbox" class="check-todo-btn" ${checked}>
-        <span class="todo-title">${todo.name}</span>
+        <span class="todo-title">${todo.title}</span>
         <button class="delete-todo-btn"><i class="far fa-trash-alt"></i></button>
         `;
 
-        
         if(todo.isCompleted === true){
             todoItem.classList.add('is-checked');
         }
@@ -75,23 +49,42 @@ function renderTodos(todos){
         todoDiv.appendChild(newTodo);
         newTodo.appendChild(todoItem);    
         todoSection.appendChild(todoDiv);
-    })
-
-}
-
-function getTodos(todos){
-    const reference = localStorage.getItem('todos');
-    if(reference === null){
-        localStorage.setItem('todos', JSON.stringify([]));
-    } else {
-       reference.push(todos);
-       JSON.parse(reference);
     }
 }
 
-function storeTodos(todos){
-    return localStorage.setItem('todos', JSON.stringify(todos));
+document.addEventListener('DOMContentLoaded', App.getTodos);
+
+
+todoForm.addEventListener('submit', e => {
+
+    e.preventDefault();
+    
+    //get form input value to retrieve the title
+    const title = document.getElementById('insert-todo').value;
+    
+    //instantiate a Todo
+    const todo = new Todo(title);
+
+    App.addListOfTodos(todo);
+    
+}, false);
+
+
+function addTodos(item){
+
+    //if whatever we insert does NOT equal an empty string
+    if(item !== ""){
+
+        const todo = new Todo(title);
+
+        //call set local todos and pass in the todo obj
+        // setLocalTodos(todo_List);
+
+        //clear input
+        todoInput.value = ""; 
+    }
 }
+
 
 
 function getFilteredTodos(e){
