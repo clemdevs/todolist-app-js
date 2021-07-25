@@ -1,14 +1,12 @@
 # TODO LIST
 
-A Todo List Crud application utilizing Classes and ES6 arrow functions.
+A Todo List Crud application utilizing Classes and Local Storage
 
-Todo filter dropdown (not finished):  
+Todo filter dropdown:  
 * Checked - shows all checked Todos.
 * Unchecked - shows all unchecked Todos.
 * All - shows all todos.
 
 To be continued:
-* Display todos
-* Check/Uncheck Todos
-* Delete Todos
-* Update Todos
+-Shorten repeated code to avoid DRY
+-Improve design
