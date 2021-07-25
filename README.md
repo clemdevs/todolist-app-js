@@ -9,4 +9,5 @@ Todo filter dropdown:
 
 To be continued:
 -Shorten repeated code to avoid DRY 
+
 -Improve design
