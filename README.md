@@ -11,6 +11,6 @@ Todo filter dropdown:
 * All - shows all todos.
 
 
-To be continued:
-- Shorten repeated code to avoid DRY  
+What can be improved:
+- Shorten repetative code to avoid DRY  
 - Improve design
